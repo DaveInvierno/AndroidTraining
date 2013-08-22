@@ -1,4 +1,6 @@
-package com.bignerdranch.android.geoquiz;
+package com.bignerdranch.android.training;
+
+import com.bignerdranch.android.training.R;
 
 import android.app.Activity;
 import android.os.Bundle;
