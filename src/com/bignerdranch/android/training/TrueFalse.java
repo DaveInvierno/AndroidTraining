@@ -3,10 +3,12 @@ package com.bignerdranch.android.training;
 public class TrueFalse {
 	private int mQuestion;
 	private boolean mTrueQuestion;
+	private boolean mIsCheated;
 	
-	public TrueFalse(int question, boolean trueQuestion) {
+	public TrueFalse(int question, boolean trueQuestion, boolean isCheated) {
 		mQuestion = question;
 		mTrueQuestion = trueQuestion;
+		mIsCheated = isCheated;
 	}
 
 	public int getQuestion() {
@@ -23,5 +25,13 @@ public class TrueFalse {
 
 	public void setTrueQuestion(boolean trueQuestion) {
 		mTrueQuestion = trueQuestion;
+	}
+	
+	public boolean isCheated() {
+		return mIsCheated;
+	}
+
+	public void setCheated(boolean cheated) {
+		mIsCheated = cheated;
 	}
 }
