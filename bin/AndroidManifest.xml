@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.bignerdranch.android.training.QuizActivity"
+            android:name="com.bignerdranch.android.training.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +23,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CheatActivity"
-            android:label="@string/book_exer1" />
+            android:name="com.bignerdranch.android.training.QuizActivity"
+            android:label="@string/book_exer1_desc" />
+        <activity
+            android:name="com.bignerdranch.android.training.CheatActivity"
+            android:label="@string/book_exer1_desc" />
+        <activity
+            android:name="com.bignerdranch.android.training.CrimeActivity"
+            android:label="@string/book_exer2_desc" >
+        </activity>
     </application>
 
 </manifest>

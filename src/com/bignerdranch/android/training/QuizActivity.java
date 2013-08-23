@@ -1,9 +1,10 @@
 package com.bignerdranch.android.training;
 
-import com.bignerdranch.android.training.R;
-
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +26,7 @@ public class QuizActivity extends Activity {
 	private ImageButton mNextButton;
 	private ImageButton mPrevButton;
 	private TextView mQuestionTextView;
+	private TextView mApiLevel;
 	
 	private TrueFalse[] mQuestionBank = new TrueFalse[] {
 	new TrueFalse(R.string.question_oceans, true, false),
@@ -38,11 +40,17 @@ public class QuizActivity extends Activity {
 	//private boolean mIsCheater;
 	
 	
+	@TargetApi(11)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "onCreate(Bundle) called"); 
 		setContentView(R.layout.activity_quiz);
+		
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			ActionBar actionBar = getActionBar();
+			actionBar.setSubtitle("Bodies of Water");
+		}
 		
 		mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
 		mQuestionTextView.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +105,7 @@ public class QuizActivity extends Activity {
 		if(savedInstanceState != null) {
 			mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
 			mQuestionBank[mCurrentIndex].setCheated(savedInstanceState.getBoolean(KEY_VALUE, false));
+			//mQuestionBank = (TrueFalse[])savedInstanceState.getSerializable(KEY_VALUE);
 		}
 		
 		mCheatButton = (Button)findViewById(R.id.cheat_button);
@@ -111,6 +120,9 @@ public class QuizActivity extends Activity {
 			}
 		});
 		
+		mApiLevel = (TextView)findViewById(R.id.api_level);
+		mApiLevel.setText("API LEVEL" + Build.VERSION.SDK_INT);
+		
 		updateQuestion();
 	}
 
@@ -120,6 +132,7 @@ public class QuizActivity extends Activity {
 		Log.i(TAG, "onSaveInstanceState");
 		savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
 		savedInstanceState.putBoolean(KEY_VALUE, mQuestionBank[mCurrentIndex].isCheated());
+		//savedInstanceState.putSerializable(KEY_VALUE, mQuestionBank);
 	}
 	
 	@Override
