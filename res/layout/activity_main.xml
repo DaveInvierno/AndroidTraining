@@ -1,20 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:gravity="center" >
-    
-	<Button 
-	    android:id="@+id/geo_quiz"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/book_exer1_desc" />
-	
-	<Button 
-	    android:id="@+id/criminal_intent"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="@string/book_exer2_desc" />
-	    
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
