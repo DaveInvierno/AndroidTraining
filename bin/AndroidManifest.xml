@@ -30,8 +30,10 @@
             android:label="@string/book_exer1_desc" />
         <activity
             android:name="com.bignerdranch.android.training.CrimeActivity"
-            android:label="@string/book_exer2_desc" >
-        </activity>
+            android:label="@string/book_exer2_desc" />
+        <activity
+            android:name="com.bignerdranch.android.training.CrimeListActivity" />
+            
     </application>
 
 </manifest>

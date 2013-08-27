@@ -38,7 +38,7 @@ public class MainLeftNavFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getActivity(), CrimeActivity.class);
+				Intent i = new Intent(getActivity(), CrimeListActivity.class);
 				startActivity(i);
 			}
 		});

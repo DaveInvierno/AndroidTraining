@@ -1,0 +1,6 @@
+<!-- Generic Layout container for an activity that uses one fragment -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
