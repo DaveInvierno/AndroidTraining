@@ -15,4 +15,10 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/book_exer2_desc" />
+	
+	<Button 
+	    android:id="@+id/hello_moon"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/book_exer3_desc" />
 </LinearLayout>

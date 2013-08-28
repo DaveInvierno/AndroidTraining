@@ -29,7 +29,7 @@
 
     <!-- Criminal Intent -->
     <string name="criminal_intent">Criminal Intent</string>
-    <string name="book_exer2_desc">Book Exer Chapter 7</string>
+    <string name="book_exer2_desc">Book Exer Chapter 7 to 12</string>
     <string name="crime_title_hint">Enter a title for the crime.</string>
     <string name="crime_title_label">Title</string>
     <string name="crime_details_label">Details</string>
@@ -39,4 +39,11 @@
     <string name="time_picker_title">Time of crime:</string>
     <!-- <string name="title_activity_crime">CrimeActivity</string> -->
 
+	<!-- Hello Moon -->
+    <string name="hello_moon">Hello Moon</string>
+    <string name="book_exer3_desc">Book Exer Chapter 13</string>
+    <string name="hellomoon_play">Play</string>
+	<string name="hellomoon_stop">Stop</string>
+	<string name="hellomoon_description">Neil Armstrong stepping onto the moon</string>
+	
 </resources>

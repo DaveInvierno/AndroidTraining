@@ -12,6 +12,7 @@ public class MainLeftNavFragment extends Fragment {
 	
 	private Button mGeoQuiz;
 	private Button mCriminalIntent;
+	private Button mHelloMoon;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,16 @@ public class MainLeftNavFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), CrimeListActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		mHelloMoon = (Button)v.findViewById(R.id.hello_moon);
+		mHelloMoon.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), HelloMoonActivity.class);
 				startActivity(i);
 			}
 		});
