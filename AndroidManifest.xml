@@ -28,11 +28,14 @@
         <activity
             android:name="com.bignerdranch.android.training.CheatActivity"
             android:label="@string/book_exer1_desc" />
-        <activity
+        <!-- <activity
             android:name="com.bignerdranch.android.training.CrimeActivity"
-            android:label="@string/book_exer2_desc" />
+            android:label="@string/book_exer2_desc" /> -->
         <activity
             android:name="com.bignerdranch.android.training.CrimeListActivity" />
+        <activity
+            android:name="com.bignerdranch.android.training.CrimePagerActivity" 
+            android:label="@string/book_exer2_desc" />
             
     </application>
 
