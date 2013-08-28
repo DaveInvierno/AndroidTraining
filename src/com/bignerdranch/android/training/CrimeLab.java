@@ -1,9 +1,11 @@
 package com.bignerdranch.android.training;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import android.content.Context;
 
+// a singleton class
 public class CrimeLab {
 	private ArrayList<Crime> mCrimes;
 	
@@ -33,5 +35,13 @@ public class CrimeLab {
 		return mCrimes;
 	}
 	
+	public Crime getCrime(UUID id) {
+		for (Crime c : mCrimes) {
+			if (c.getId().equals(id))
+				return c;
+		}
+		
+		return null;
+	}
 	
 }
