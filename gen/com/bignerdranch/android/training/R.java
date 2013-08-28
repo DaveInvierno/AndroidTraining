@@ -27,20 +27,23 @@ public final class R {
     }
     public static final class id {
         public static final int FrameLayout1=0x7f05000b;
-        public static final int action_settings=0x7f050014;
+        public static final int action_settings=0x7f050017;
         public static final int answer_text_view=0x7f050001;
         public static final int api_level=0x7f05000a;
         public static final int cheat_button=0x7f050007;
-        public static final int crime_date=0x7f05000d;
-        public static final int crime_list_item_dateTextView=0x7f050013;
-        public static final int crime_list_item_solvedCheckBox=0x7f050011;
-        public static final int crime_list_item_titleTextView=0x7f050012;
-        public static final int crime_solved=0x7f05000e;
-        public static final int crime_title=0x7f05000c;
-        public static final int criminal_intent=0x7f050010;
+        public static final int crime_date=0x7f05000f;
+        public static final int crime_list_item_dateTextView=0x7f050016;
+        public static final int crime_list_item_solvedCheckBox=0x7f050014;
+        public static final int crime_list_item_titleTextView=0x7f050015;
+        public static final int crime_solved=0x7f050011;
+        public static final int crime_time=0x7f050010;
+        public static final int crime_title=0x7f05000e;
+        public static final int criminal_intent=0x7f050013;
+        public static final int dialog_date_datePicker=0x7f05000c;
+        public static final int dialog_time_timePicker=0x7f05000d;
         public static final int false_button=0x7f050006;
         public static final int fragmentContainer=0x7f050003;
-        public static final int geo_quiz=0x7f05000f;
+        public static final int geo_quiz=0x7f050012;
         public static final int next_button=0x7f050009;
         public static final int prev_button=0x7f050008;
         public static final int question_text_view=0x7f050004;
@@ -52,9 +55,11 @@ public final class R {
         public static final int activity_cheat=0x7f030000;
         public static final int activity_fragment=0x7f030001;
         public static final int activity_quiz=0x7f030002;
-        public static final int fragment_crime=0x7f030003;
-        public static final int fragment_mainleftnav=0x7f030004;
-        public static final int list_item_crime=0x7f030005;
+        public static final int dialog_date=0x7f030003;
+        public static final int dialog_time=0x7f030004;
+        public static final int fragment_crime=0x7f030005;
+        public static final int fragment_mainleftnav=0x7f030006;
+        public static final int list_item_crime=0x7f030007;
     }
     public static final class menu {
         public static final int crime=0x7f080000;
@@ -75,6 +80,7 @@ public final class R {
         /**  Criminal Intent 
          */
         public static final int criminal_intent=0x7f060013;
+        public static final int date_picker_title=0x7f06001a;
         public static final int false_button=0x7f060005;
         /**  Geo Quiz 
          */
@@ -89,6 +95,7 @@ public final class R {
         public static final int question_mideast=0x7f06000b;
         public static final int question_oceans=0x7f06000a;
         public static final int show_answer_button=0x7f060011;
+        public static final int time_picker_title=0x7f06001b;
         public static final int true_button=0x7f060004;
         public static final int warning_text=0x7f060010;
     }

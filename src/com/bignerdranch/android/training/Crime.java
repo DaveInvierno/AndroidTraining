@@ -8,12 +8,14 @@ public class Crime {
 	private UUID mId;
 	private String mTitle;
 	private Date mDate;
+	private Date mTime;
 	private boolean mSolved;
 	
 	public Crime() {
 		// Generate unique identifier
 		mId = UUID.randomUUID();
 		mDate = new Date();
+		mTime = new Date();
 	}
 	
 	@Override
@@ -33,6 +35,14 @@ public class Crime {
 		mDate = date;
 	}
 
+	public Date getTime() {
+		return mTime;
+	}
+
+	public void setTime(Date time) {
+		mTime = time;
+	}
+	
 	public boolean isSolved() {
 		return mSolved;
 	}

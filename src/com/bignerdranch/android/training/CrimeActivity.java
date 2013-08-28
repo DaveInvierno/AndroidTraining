@@ -1,4 +1,4 @@
-package com.bignerdranch.android.training;
+/*package com.bignerdranch.android.training;
 
 import java.util.UUID;
 
@@ -16,3 +16,4 @@ public class CrimeActivity extends SingleFragmentActivity {
 	}
 
 }
+*/
