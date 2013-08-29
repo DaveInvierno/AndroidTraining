@@ -24,10 +24,10 @@
         </activity>
         <activity
             android:name="com.bignerdranch.android.training.QuizActivity"
-            android:label="@string/book_exer1_desc" />
+            android:label="@string/geo_quiz" />
         <activity
             android:name="com.bignerdranch.android.training.CheatActivity"
-            android:label="@string/book_exer1_desc" />
+            android:label="@string/geo_quiz" />
         <!-- <activity
             android:name="com.bignerdranch.android.training.CrimeActivity"
             android:label="@string/book_exer2_desc" /> -->
@@ -35,10 +35,14 @@
             android:name="com.bignerdranch.android.training.CrimeListActivity" />
         <activity
             android:name="com.bignerdranch.android.training.CrimePagerActivity" 
-            android:label="@string/book_exer2_desc" />
+            android:label="@string/criminal_intent" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CrimeListActivity"/>
+        </activity> 
+            
         <activity
             android:name="com.bignerdranch.android.training.HelloMoonActivity" 
-            android:label="@string/book_exer3_desc" />
+            android:label="@string/hello_moon" />
             
     </application>
 

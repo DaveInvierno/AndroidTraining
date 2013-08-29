@@ -1,6 +1,5 @@
 package com.bignerdranch.android.training;
 
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +18,13 @@ public class HelloMoonFragment extends Fragment {
 	private Button mStopButton;
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstances) {
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_hello_moon, parent, false);
 		
 		mPlayButton = (Button)v.findViewById(R.id.hellomoon_playButton);
@@ -53,7 +58,7 @@ public class HelloMoonFragment extends Fragment {
 			}
 		});
 		
-		showVideo(v);
+		//showVideo(v);
 		
 		return v;
 	}
@@ -64,14 +69,13 @@ public class HelloMoonFragment extends Fragment {
 		mPlayer.stop();
 	}
 	
-	 private void showVideo(View v)
-	 {
-	        VideoView vd = (VideoView)v.findViewById(R.id.videoView);
-	        AssetManager am = getActivity().getAssets();
-	        Uri uri = Uri.parse("android.resource://" +	R.raw.apollo_17_stroll);
-	        MediaController mc = new MediaController(getActivity());
-	        vd.setMediaController(mc);
-	        vd.setVideoURI(uri);
-	        vd.start();
-	 }
+	/*private void showVideo(View v)
+	{
+	       VideoView vd = (VideoView)v.findViewById(R.id.videoView);
+	       Uri uri = Uri.parse("android.resource://" +	R.raw.apollo_17_stroll);
+	       MediaController mc = new MediaController(getActivity());
+	       vd.setMediaController(mc);
+	       vd.setVideoURI(uri);
+	       vd.start();
+	}*/
 }

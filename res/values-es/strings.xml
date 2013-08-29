@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!-- Hello Moon -->
+    <string name="hello_moon">HolaLuna</string>
+    <string name="book_exer3_desc">Book Exer Chapter 13</string>
+	<string name="hellomoon_play">Tocar</string>
+	<string name="hellomoon_stop">Detener</string>
+	<string name="hellomoon_pause">Pause</string>
+	<string name="hellomoon_resume">Resume</string>
+	<string name="hellomoon_image_description">Neil Armstrong pisando la luna</string>
+
+</resources>
