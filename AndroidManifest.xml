@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +36,9 @@
         <activity
             android:name="com.bignerdranch.android.training.CrimePagerActivity" 
             android:label="@string/book_exer2_desc" />
+        <activity
+            android:name="com.bignerdranch.android.training.HelloMoonActivity" 
+            android:label="@string/book_exer3_desc" />
             
     </application>
 

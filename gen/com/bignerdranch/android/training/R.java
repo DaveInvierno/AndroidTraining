@@ -27,41 +27,48 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int FrameLayout1=0x7f06000b;
-        public static final int action_settings=0x7f060018;
+        public static final int FrameLayout1=0x7f06000c;
+        public static final int action_settings=0x7f06001d;
         public static final int answer_text_view=0x7f060001;
-        public static final int api_level=0x7f06000a;
-        public static final int cheat_button=0x7f060007;
-        public static final int crime_date=0x7f06000f;
-        public static final int crime_list_item_dateTextView=0x7f060017;
-        public static final int crime_list_item_solvedCheckBox=0x7f060015;
-        public static final int crime_list_item_titleTextView=0x7f060016;
-        public static final int crime_solved=0x7f060011;
-        public static final int crime_time=0x7f060010;
-        public static final int crime_title=0x7f06000e;
-        public static final int criminal_intent=0x7f060013;
-        public static final int dialog_date_datePicker=0x7f06000c;
-        public static final int dialog_time_timePicker=0x7f06000d;
-        public static final int false_button=0x7f060006;
+        public static final int api_level=0x7f06000b;
+        public static final int cheat_button=0x7f060008;
+        public static final int crime_date=0x7f060010;
+        public static final int crime_list_item_dateTextView=0x7f06001c;
+        public static final int crime_list_item_solvedCheckBox=0x7f06001a;
+        public static final int crime_list_item_titleTextView=0x7f06001b;
+        public static final int crime_solved=0x7f060012;
+        public static final int crime_time=0x7f060011;
+        public static final int crime_title=0x7f06000f;
+        public static final int criminal_intent=0x7f060018;
+        public static final int dialog_date_datePicker=0x7f06000d;
+        public static final int dialog_time_timePicker=0x7f06000e;
+        public static final int false_button=0x7f060007;
         public static final int fragmentContainer=0x7f060003;
-        public static final int geo_quiz=0x7f060012;
-        public static final int hello_moon=0x7f060014;
-        public static final int next_button=0x7f060009;
-        public static final int prev_button=0x7f060008;
-        public static final int question_text_view=0x7f060004;
+        public static final int geo_quiz=0x7f060017;
+        public static final int helloMoonFragment=0x7f060004;
+        public static final int hello_moon=0x7f060019;
+        public static final int hellomoon_pauseButton=0x7f060014;
+        public static final int hellomoon_playButton=0x7f060013;
+        public static final int hellomoon_stopButton=0x7f060015;
+        public static final int next_button=0x7f06000a;
+        public static final int prev_button=0x7f060009;
+        public static final int question_text_view=0x7f060005;
         public static final int show_answer_button=0x7f060002;
-        public static final int true_button=0x7f060005;
+        public static final int true_button=0x7f060006;
+        public static final int videoView=0x7f060016;
         public static final int viewPager=0x7f060000;
     }
     public static final class layout {
         public static final int activity_cheat=0x7f030000;
         public static final int activity_fragment=0x7f030001;
-        public static final int activity_quiz=0x7f030002;
-        public static final int dialog_date=0x7f030003;
-        public static final int dialog_time=0x7f030004;
-        public static final int fragment_crime=0x7f030005;
-        public static final int fragment_mainleftnav=0x7f030006;
-        public static final int list_item_crime=0x7f030007;
+        public static final int activity_hello_moon=0x7f030002;
+        public static final int activity_quiz=0x7f030003;
+        public static final int dialog_date=0x7f030004;
+        public static final int dialog_time=0x7f030005;
+        public static final int fragment_crime=0x7f030006;
+        public static final int fragment_hello_moon=0x7f030007;
+        public static final int fragment_mainleftnav=0x7f030008;
+        public static final int list_item_crime=0x7f030009;
     }
     public static final class menu {
         public static final int crime=0x7f090000;
@@ -96,8 +103,10 @@ public final class R {
  Hello Moon 
          */
         public static final int hello_moon=0x7f07001c;
-        public static final int hellomoon_description=0x7f070020;
+        public static final int hellomoon_description=0x7f070022;
+        public static final int hellomoon_pause=0x7f070020;
         public static final int hellomoon_play=0x7f07001e;
+        public static final int hellomoon_resume=0x7f070021;
         public static final int hellomoon_stop=0x7f07001f;
         public static final int incorrect_toast=0x7f070007;
         public static final int judgment_toast=0x7f070012;
