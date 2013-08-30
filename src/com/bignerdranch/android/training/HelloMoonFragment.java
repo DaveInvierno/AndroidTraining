@@ -58,7 +58,7 @@ public class HelloMoonFragment extends Fragment {
 			}
 		});
 		
-		//showVideo(v);
+		showVideo(v);
 		
 		return v;
 	}
@@ -69,7 +69,7 @@ public class HelloMoonFragment extends Fragment {
 		mPlayer.stop();
 	}
 	
-	/*private void showVideo(View v)
+	private void showVideo(View v)
 	{
 	       VideoView vd = (VideoView)v.findViewById(R.id.videoView);
 	       Uri uri = Uri.parse("android.resource://" +	R.raw.apollo_17_stroll);
@@ -77,5 +77,5 @@ public class HelloMoonFragment extends Fragment {
 	       vd.setMediaController(mc);
 	       vd.setVideoURI(uri);
 	       vd.start();
-	}*/
+	}
 }

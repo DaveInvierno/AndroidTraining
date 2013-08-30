@@ -1,16 +1,7 @@
 package com.bignerdranch.android.training;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.UUID;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONTokener;
 
 import android.content.Context;
 import android.util.Log;

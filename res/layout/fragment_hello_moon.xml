@@ -35,7 +35,7 @@
 	    
 	</TableRow>
 	
-	<!-- <TableRow 
+	<TableRow 
 	    android:gravity="center|top"
 	    android:layout_weight="0" >
 	    
@@ -46,6 +46,6 @@
 	        android:scaleType="centerInside"
 	    	android:layout_weight="1" />
 	    
-	</TableRow> -->
+	</TableRow>
     
 </TableLayout>
