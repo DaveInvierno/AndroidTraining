@@ -51,6 +51,7 @@ public final class R {
         public static final int hellomoon_playButton=0x7f060013;
         public static final int hellomoon_stopButton=0x7f060015;
         public static final int menu_item_new_crime=0x7f06001d;
+        public static final int menu_item_show_subtitle=0x7f06001e;
         public static final int next_button=0x7f06000a;
         public static final int prev_button=0x7f060009;
         public static final int question_text_view=0x7f060005;
