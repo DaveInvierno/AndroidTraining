@@ -63,4 +63,7 @@
 	<string name="hellomoon_resume">Resume</string>
 	<string name="hellomoon_description">Neil Armstrong stepping onto the moon</string>
 	
+	<!-- Nerd Launcher -->
+	 <string name="nerd_launcher">Nerd Launcher</string>
+	
 </resources>

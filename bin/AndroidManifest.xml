@@ -46,10 +46,12 @@
 			android:screenOrientation="landscape"
 			android:label="@string/criminal_intent">
 		</activity>
-        
         <activity
             android:name="com.bignerdranch.android.training.HelloMoonActivity" 
             android:label="@string/hello_moon" />
+        <activity
+            android:name="com.bignerdranch.android.training.NerdLauncherActivity" 
+            android:label="@string/nerd_launcher" />
             
     </application>
 

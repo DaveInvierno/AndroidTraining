@@ -29,7 +29,7 @@ public final class R {
     }
     public static final class id {
         public static final int FrameLayout1=0x7f06000c;
-        public static final int action_settings=0x7f060025;
+        public static final int action_settings=0x7f060026;
         public static final int answer_text_view=0x7f060001;
         public static final int api_level=0x7f06000b;
         public static final int cheat_button=0x7f060008;
@@ -39,9 +39,9 @@ public final class R {
         public static final int crime_date=0x7f060013;
         public static final int crime_imageButton=0x7f060011;
         public static final int crime_imageView=0x7f060010;
-        public static final int crime_list_item_dateTextView=0x7f060024;
-        public static final int crime_list_item_solvedCheckBox=0x7f060022;
-        public static final int crime_list_item_titleTextView=0x7f060023;
+        public static final int crime_list_item_dateTextView=0x7f060025;
+        public static final int crime_list_item_solvedCheckBox=0x7f060023;
+        public static final int crime_list_item_titleTextView=0x7f060024;
         public static final int crime_reportButton=0x7f060017;
         public static final int crime_solved=0x7f060015;
         public static final int crime_suspectButton=0x7f060016;
@@ -59,9 +59,10 @@ public final class R {
         public static final int hellomoon_pauseButton=0x7f06001c;
         public static final int hellomoon_playButton=0x7f06001b;
         public static final int hellomoon_stopButton=0x7f06001d;
-        public static final int menu_item_delete_crime=0x7f060026;
-        public static final int menu_item_new_crime=0x7f060027;
-        public static final int menu_item_show_subtitle=0x7f060028;
+        public static final int menu_item_delete_crime=0x7f060027;
+        public static final int menu_item_new_crime=0x7f060028;
+        public static final int menu_item_show_subtitle=0x7f060029;
+        public static final int nerd_launcher=0x7f060022;
         public static final int next_button=0x7f06000a;
         public static final int prev_button=0x7f060009;
         public static final int question_text_view=0x7f060005;
@@ -132,7 +133,7 @@ public final class R {
          */
         public static final int hello_moon=0x7f07002b;
         public static final int hellomoon_description=0x7f070031;
-        public static final int hellomoon_image_description=0x7f070032;
+        public static final int hellomoon_image_description=0x7f070033;
         public static final int hellomoon_pause=0x7f07002f;
         public static final int hellomoon_play=0x7f07002d;
         public static final int hellomoon_resume=0x7f070030;
@@ -140,6 +141,9 @@ public final class R {
         public static final int hide_subtitle=0x7f07001e;
         public static final int incorrect_toast=0x7f070007;
         public static final int judgment_toast=0x7f070012;
+        /**  Nerd Launcher 
+         */
+        public static final int nerd_launcher=0x7f070032;
         public static final int new_crime=0x7f07001c;
         public static final int next_button=0x7f070008;
         public static final int prev_button=0x7f070009;

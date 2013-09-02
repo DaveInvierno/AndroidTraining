@@ -13,6 +13,7 @@ public class MainLeftNavFragment extends Fragment {
 	private Button mGeoQuiz;
 	private Button mCriminalIntent;
 	private Button mHelloMoon;
+	private Button mNerdLauncher;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,16 @@ public class MainLeftNavFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), HelloMoonActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		mNerdLauncher = (Button)v.findViewById(R.id.nerd_launcher);
+		mNerdLauncher.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), NerdLauncherActivity.class);
 				startActivity(i);
 			}
 		});
