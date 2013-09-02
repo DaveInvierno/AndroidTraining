@@ -2,6 +2,6 @@
 <resources>
 
 	<!-- Hello Moon -->
-    <string name="hello_moon">Hello Moon! How are you? Is it cold up there?</string>
+    <string name="hello_moon">Hello Moon</string>
 	
 </resources>

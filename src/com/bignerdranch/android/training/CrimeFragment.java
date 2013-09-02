@@ -7,9 +7,12 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NavUtils;
@@ -37,9 +40,10 @@ public class CrimeFragment extends Fragment {
 	private static final String DIALOG_DATE = "date";
 	private static final String DIALOG_TIME = "time";
 	private static final int REQUEST_DATE = 0;
-	private static final int REQUEST_TIME = 2;
+	private static final int REQUEST_TIME = 3;
 	private static final int REQUEST_PHOTO = 1;
 	private static final String DIALOG_IMAGE = "image";
+	private static final int REQUEST_CONTACT = 2;
 	
 	private Crime mCrime;
 	private EditText mTitleField;
@@ -48,11 +52,33 @@ public class CrimeFragment extends Fragment {
 	private CheckBox mSolvedCheckbox;
 	private ImageButton mPhotoButton;
 	private ImageView mPhotoView;
+	private Button mSuspectButton;
+	private Callbacks mCallbacks;
+	
+	/**
+	* Required interface for hosting activities.
+	*/
+	public interface Callbacks {
+		void onCrimeUpdated(Crime crime);
+	}
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		mCallbacks = (Callbacks)activity;
+	}
+	
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		mCallbacks = null;
+	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
+		setRetainInstance(true);
 		
 		mCrime = new Crime();
 		
@@ -82,6 +108,8 @@ public class CrimeFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 				mCrime.setTitle(arg0.toString());
+				mCallbacks.onCrimeUpdated(mCrime);
+				//getActivity().setTitle(mCrime.getTitle());
 			}
 			
 			@Override
@@ -132,6 +160,7 @@ public class CrimeFragment extends Fragment {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// Set the crime's solved property
 				mCrime.setSolved(isChecked);
+				mCallbacks.onCrimeUpdated(mCrime);
 			}
 		});
 		
@@ -162,6 +191,32 @@ public class CrimeFragment extends Fragment {
 		PackageManager pm = getActivity().getPackageManager();
 		if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) && !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT)) {
 			mPhotoButton.setEnabled(false);
+		}
+		
+		Button reportButton = (Button)v.findViewById(R.id.crime_reportButton);
+		reportButton.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(Intent.ACTION_SEND);
+				i.setType("text/plain");
+				i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
+				i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject));
+				i = Intent.createChooser(i, getString(R.string.send_report));
+				startActivity(i);
+			}
+		});
+		
+		mSuspectButton = (Button)v.findViewById(R.id.crime_suspectButton);
+		mSuspectButton.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+				startActivityForResult(i, REQUEST_CONTACT);
+			}
+		});
+	
+		if (mCrime.getSuspect() != null) {
+			mSuspectButton.setText(mCrime.getSuspect());
 		}
 		
 		return v;
@@ -216,10 +271,12 @@ public class CrimeFragment extends Fragment {
 		if (requestCode == REQUEST_DATE) {
 			Date date = (Date)data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
 			mCrime.setDate(date);
+			mCallbacks.onCrimeUpdated(mCrime);
 			updateDate();
 		} else if (requestCode == REQUEST_TIME) {
 			Date date = (Date)data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
 			mCrime.setTime(date);
+			mCallbacks.onCrimeUpdated(mCrime);
 			updateTime();
 		} else if (requestCode == REQUEST_PHOTO) {
 			// Create a new Photo object and attach it to the crime
@@ -229,9 +286,36 @@ public class CrimeFragment extends Fragment {
 				Log.i(TAG, "filename: " + filename);
 				Photo p = new Photo(filename);
 				mCrime.setPhoto(p);
+				mCallbacks.onCrimeUpdated(mCrime);
 				showPhoto();
 				Log.i(TAG, "Crime: " + mCrime.getTitle() + " has a photo");
 			}
+		} else if (requestCode == REQUEST_CONTACT) {
+			Uri contactUri = data.getData();
+			// Specify which fields you want your query to return
+			// values for.
+			String[] queryFields = new String[] {
+					ContactsContract.Contacts.DISPLAY_NAME
+			};
+			// Perform your query - the contactUri is like a "where"
+			// clause here
+			Cursor c = getActivity().getContentResolver()
+			.query(contactUri, queryFields, null, null, null);
+			
+			// Double-check that you actually got results
+			if (c.getCount() == 0) {
+				c.close();
+				return;
+			}
+			
+			// Pull out the first column of the first row of data -
+			// that is your suspect's name.
+			c.moveToFirst();
+			String suspect = c.getString(0);
+			mCrime.setSuspect(suspect);
+			mCallbacks.onCrimeUpdated(mCrime);
+			mSuspectButton.setText(suspect);
+			c.close();
 		}
 	}
 	
@@ -252,5 +336,29 @@ public class CrimeFragment extends Fragment {
 	public void onPause() {
 		super.onPause();
 		CrimeLab.get(getActivity()).saveCrimes();
+	}
+	
+	private String getCrimeReport() {
+		String solvedString = null;
+		
+		if (mCrime.isSolved()) {
+			solvedString = getString(R.string.crime_report_solved);
+		} else {
+			solvedString = getString(R.string.crime_report_unsolved);
+		}
+		
+		String dateFormat = "EEE, MMM dd";
+		String dateString = DateFormat.format(dateFormat, mCrime.getDate()).toString();
+		String suspect = mCrime.getSuspect();
+		
+		if (suspect == null) {
+			suspect = getString(R.string.crime_report_no_suspect);
+		} else {
+			suspect = getString(R.string.crime_report_suspect, suspect);
+		}
+		
+		String report = getString(R.string.crime_report, mCrime.getTitle(), dateString, solvedString, suspect);
+		
+		return report;
 	}
 }

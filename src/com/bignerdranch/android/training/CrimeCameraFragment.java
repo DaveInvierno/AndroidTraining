@@ -91,7 +91,10 @@ public class CrimeCameraFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				getActivity().finish();
+				//getActivity().finish();
+				if (mCamera != null) {
+					mCamera.takePicture(mShutterCallback, null, mJpegCallback);
+				}
 			}
 		});
 		

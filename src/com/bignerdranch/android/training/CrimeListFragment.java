@@ -3,14 +3,15 @@ package com.bignerdranch.android.training;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.text.format.DateFormat;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,6 +31,25 @@ public class CrimeListFragment extends ListFragment {
 	
 	private ArrayList<Crime> mCrimes;
 	private boolean mSubtitleVisible;
+	private Callbacks mCallbacks;
+	
+	/**
+	* Required interface for hosting activities.
+	*/
+	public interface Callbacks {
+		void onCrimeSelected(Crime crime);
+	}
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		mCallbacks = (Callbacks)activity;
+	}
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		mCallbacks = null;
+	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -140,17 +160,19 @@ public class CrimeListFragment extends ListFragment {
 		 */
 		//Crime c = (Crime)(getListAdapter()).getItem(position);
 		
-		Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
+		//Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
 		//Log.d("CrimeListFragment", c.getTitle() + " was clicked");
 		
 		// Start CrimeActivity
 		//Intent i = new Intent(getActivity(), CrimeActivity.class);
 		// Start CrimePagerActivity with this crime
-		Intent i = new Intent(getActivity(), CrimePagerActivity.class);
+		/*Intent i = new Intent(getActivity(), CrimePagerActivity.class);
 		i.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
-		
-		startActivity(i);
+		startActivity(i);*/
 		//startActivityForResult(i, REQUEST_CRIME);
+		
+		Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
+		mCallbacks.onCrimeSelected(c);
 	}
 	
 	// custom adapter to display crimes
@@ -203,9 +225,11 @@ public class CrimeListFragment extends ListFragment {
 			case R.id.menu_item_new_crime:
 				Crime crime = new Crime();
 				CrimeLab.get(getActivity()).addCrime(crime);
-				Intent i = new Intent(getActivity(), CrimePagerActivity.class);
+				/*Intent i = new Intent(getActivity(), CrimePagerActivity.class);
 				i.putExtra(CrimeFragment.EXTRA_CRIME_ID, crime.getId());
-				startActivityForResult(i, 0);
+				startActivityForResult(i, 0);*/
+				((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
+				mCallbacks.onCrimeSelected(crime);
 				return true;
 			case R.id.menu_item_show_subtitle:
 				// if subtitle is hidden or shown, change text of subtitle title
@@ -247,5 +271,9 @@ public class CrimeListFragment extends ListFragment {
 		}
 		
 		return super.onContextItemSelected(item);
+	}
+	
+	public void updateUI() {
+		((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
 	}
 }
