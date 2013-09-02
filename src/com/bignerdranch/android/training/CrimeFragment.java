@@ -109,7 +109,7 @@ public class CrimeFragment extends Fragment {
 			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 				mCrime.setTitle(arg0.toString());
 				mCallbacks.onCrimeUpdated(mCrime);
-				//getActivity().setTitle(mCrime.getTitle());
+				getActivity().setTitle(mCrime.getTitle());
 			}
 			
 			@Override

@@ -52,6 +52,10 @@
         <activity
             android:name="com.bignerdranch.android.training.NerdLauncherActivity" 
             android:label="@string/nerd_launcher" />
+        <activity
+            android:name="com.bignerdranch.android.training.RemoteControlActivity"
+            android:screenOrientation="portrait" 
+            android:label="@string/remote_control" />
             
     </application>
 

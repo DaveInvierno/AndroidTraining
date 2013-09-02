@@ -25,11 +25,13 @@ public final class R {
         public static final int arrow_left=0x7f020001;
         public static final int arrow_right=0x7f020002;
         public static final int background_activated=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
+        public static final int button_shape_normal=0x7f020004;
+        public static final int button_shape_pressed=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
     }
     public static final class id {
         public static final int FrameLayout1=0x7f06000c;
-        public static final int action_settings=0x7f060026;
+        public static final int action_settings=0x7f06002a;
         public static final int answer_text_view=0x7f060001;
         public static final int api_level=0x7f06000b;
         public static final int cheat_button=0x7f060008;
@@ -39,9 +41,9 @@ public final class R {
         public static final int crime_date=0x7f060013;
         public static final int crime_imageButton=0x7f060011;
         public static final int crime_imageView=0x7f060010;
-        public static final int crime_list_item_dateTextView=0x7f060025;
-        public static final int crime_list_item_solvedCheckBox=0x7f060023;
-        public static final int crime_list_item_titleTextView=0x7f060024;
+        public static final int crime_list_item_dateTextView=0x7f060029;
+        public static final int crime_list_item_solvedCheckBox=0x7f060027;
+        public static final int crime_list_item_titleTextView=0x7f060028;
         public static final int crime_reportButton=0x7f060017;
         public static final int crime_solved=0x7f060015;
         public static final int crime_suspectButton=0x7f060016;
@@ -53,19 +55,23 @@ public final class R {
         public static final int dialog_time_timePicker=0x7f06000f;
         public static final int false_button=0x7f060007;
         public static final int fragmentContainer=0x7f060003;
+        public static final int fragment_remote_control_selectedTextView=0x7f060025;
+        public static final int fragment_remote_control_tableLayout=0x7f060024;
+        public static final int fragment_remote_control_workingTextView=0x7f060026;
         public static final int geo_quiz=0x7f06001f;
         public static final int helloMoonFragment=0x7f060004;
         public static final int hello_moon=0x7f060021;
         public static final int hellomoon_pauseButton=0x7f06001c;
         public static final int hellomoon_playButton=0x7f06001b;
         public static final int hellomoon_stopButton=0x7f06001d;
-        public static final int menu_item_delete_crime=0x7f060027;
-        public static final int menu_item_new_crime=0x7f060028;
-        public static final int menu_item_show_subtitle=0x7f060029;
+        public static final int menu_item_delete_crime=0x7f06002b;
+        public static final int menu_item_new_crime=0x7f06002c;
+        public static final int menu_item_show_subtitle=0x7f06002d;
         public static final int nerd_launcher=0x7f060022;
         public static final int next_button=0x7f06000a;
         public static final int prev_button=0x7f060009;
         public static final int question_text_view=0x7f060005;
+        public static final int remote_control=0x7f060023;
         public static final int show_answer_button=0x7f060002;
         public static final int true_button=0x7f060006;
         public static final int videoView=0x7f06001e;
@@ -75,16 +81,18 @@ public final class R {
         public static final int activity_cheat=0x7f030000;
         public static final int activity_fragment=0x7f030001;
         public static final int activity_hello_moon=0x7f030002;
-        public static final int activity_masterdetail=0x7f03000c;
+        public static final int activity_masterdetail=0x7f03000e;
         public static final int activity_quiz=0x7f030003;
         public static final int activity_twopane=0x7f030004;
-        public static final int dialog_date=0x7f030005;
-        public static final int dialog_time=0x7f030006;
-        public static final int fragment_crime=0x7f030007;
-        public static final int fragment_crime_camera=0x7f030008;
-        public static final int fragment_hello_moon=0x7f030009;
-        public static final int fragment_mainleftnav=0x7f03000a;
-        public static final int list_item_crime=0x7f03000b;
+        public static final int button_row=0x7f030005;
+        public static final int dialog_date=0x7f030006;
+        public static final int dialog_time=0x7f030007;
+        public static final int fragment_crime=0x7f030008;
+        public static final int fragment_crime_camera=0x7f030009;
+        public static final int fragment_hello_moon=0x7f03000a;
+        public static final int fragment_mainleftnav=0x7f03000b;
+        public static final int fragment_remote_control=0x7f03000c;
+        public static final int list_item_crime=0x7f03000d;
     }
     public static final class menu {
         public static final int crime=0x7f090000;
@@ -133,7 +141,7 @@ public final class R {
          */
         public static final int hello_moon=0x7f07002b;
         public static final int hellomoon_description=0x7f070031;
-        public static final int hellomoon_image_description=0x7f070033;
+        public static final int hellomoon_image_description=0x7f070034;
         public static final int hellomoon_pause=0x7f07002f;
         public static final int hellomoon_play=0x7f07002d;
         public static final int hellomoon_resume=0x7f070030;
@@ -152,6 +160,9 @@ public final class R {
         public static final int question_asia=0x7f07000e;
         public static final int question_mideast=0x7f07000b;
         public static final int question_oceans=0x7f07000a;
+        /**  Remote Control 
+         */
+        public static final int remote_control=0x7f070033;
         public static final int send_report=0x7f07002a;
         public static final int show_answer_button=0x7f070011;
         public static final int show_subtitle=0x7f07001d;
@@ -188,5 +199,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int RemoteButton=0x7f080002;
     }
 }
