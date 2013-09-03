@@ -15,6 +15,7 @@ public class MainLeftNavFragment extends Fragment {
 	private Button mHelloMoon;
 	private Button mNerdLauncher;
 	private Button mRemoteControl;
+	private Button mPhotoGallery;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,16 @@ public class MainLeftNavFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), RemoteControlActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		mPhotoGallery = (Button)v.findViewById(R.id.photo_gallery);
+		mPhotoGallery.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), PhotoGalleryActivity.class);
 				startActivity(i);
 			}
 		});

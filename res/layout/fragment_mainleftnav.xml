@@ -34,4 +34,10 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/remote_control" />
 	
+	<Button 
+	    android:id="@+id/photo_gallery"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/photo_gallery" />
+	
 </LinearLayout>

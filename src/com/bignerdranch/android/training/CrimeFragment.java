@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -197,12 +199,37 @@ public class CrimeFragment extends Fragment {
 		reportButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent i = new Intent(Intent.ACTION_SEND);
-				i.setType("text/plain");
-				i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
-				i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject));
-				i = Intent.createChooser(i, getString(R.string.send_report));
-				startActivity(i);
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+				 
+				// set title
+				alertDialogBuilder.setTitle("Send Message?");
+				
+				// set dialog message
+				alertDialogBuilder
+					.setCancelable(false)
+					.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							Intent i = new Intent(Intent.ACTION_SEND);
+							i.setType("text/plain");
+							i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
+							i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject));
+							i = Intent.createChooser(i, getString(R.string.send_report));
+							startActivity(i);
+						}
+					  })
+					.setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							// if this button is clicked, just close
+							// the dialog box and do nothing
+							dialog.cancel();
+						}
+					});
+	 
+					// create alert dialog
+					AlertDialog alertDialog = alertDialogBuilder.create();
+	 
+					// show it
+					alertDialog.show();
 			}
 		});
 		
