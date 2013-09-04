@@ -9,6 +9,7 @@ package com.bignerdranch.android.training;
 
 public final class Manifest {
     public static final class permission {
+        public static final String MAPS_RECEIVE="com.bignerdranch.android.training.permission.MAPS_RECEIVE";
         public static final String PRIVATE="com.bignerdranch.android.training.PRIVATE";
     }
 }

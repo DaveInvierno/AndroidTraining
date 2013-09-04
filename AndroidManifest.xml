@@ -11,6 +11,15 @@
     <permission android:name="com.bignerdranch.android.training.PRIVATE"
 		android:protectionLevel="signature" />
     
+    <permission
+		android:name="com.bignerdranch.android.training.permission.MAPS_RECEIVE"
+		android:protectionLevel="signature"/>
+	<uses-permission android:name="com.bignerdranch.android.training.permission.MAPS_RECEIVE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
     <uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -18,8 +27,11 @@
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="com.bignerdranch.android.training.PRIVATE" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	
 	<uses-feature android:required="true"
 		android:name="android.hardware.location.gps"/>
+	<uses-feature android:required="true"
+		android:glEsVersion="0x00020000"/>
 	
     <application
         android:allowBackup="true"
@@ -89,6 +101,8 @@
         <activity
             android:name=".RunListActivity" 
             android:label="@string/run_tracker" />
+        <activity android:name=".RunMapActivity"
+			android:label="@string/run_tracker" />
         <service android:name=".PollService" />
         <receiver android:name=".StartupReceiver">
 			<intent-filter>
@@ -110,6 +124,9 @@
 				<action android:name="com.bignerdranch.android.training.ACTION_LOCATION"/>
 			</intent-filter>
 		</receiver>
+		<meta-data
+			android:name="com.google.android.maps.v2.API_KEY"
+			android:value="your-maps-API-key-here" />
     </application>
 
 </manifest>
