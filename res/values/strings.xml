@@ -82,4 +82,18 @@
 	<!-- Drag And Draw -->
 	<string name="drag_and_draw">Drag And Draw</string>
 	
+	<!-- Run Tracker -->
+	<string name="run_tracker">Run Tracker</string>
+	<string name="started">Started:</string>
+	<string name="latitude">Latitude:</string>
+	<string name="longitude">Longitude:</string>
+	<string name="altitude">Altitude:</string>
+	<string name="elapsed_time">Elapsed Time:</string>
+	<string name="start">Start</string>
+	<string name="stop">Stop</string>
+	<string name="gps_enabled">GPS Enabled</string>
+	<string name="gps_disabled">GPS Disabled</string>
+	<string name="cell_text">Run at %1$s</string>
+	<string name="new_run">New Run</string>
+	
 </resources>

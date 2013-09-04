@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="18" />
     
     <permission android:name="com.bignerdranch.android.training.PRIVATE"
@@ -17,6 +17,9 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="com.bignerdranch.android.training.PRIVATE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-feature android:required="true"
+		android:name="android.hardware.location.gps"/>
 	
     <application
         android:allowBackup="true"
@@ -80,6 +83,12 @@
         <activity
             android:name=".DragAndDrawActivity" 
             android:label="@string/drag_and_draw" />
+        <activity
+            android:name=".RunActivity" 
+            android:label="@string/run_tracker" />
+        <activity
+            android:name=".RunListActivity" 
+            android:label="@string/run_tracker" />
         <service android:name=".PollService" />
         <receiver android:name=".StartupReceiver">
 			<intent-filter>
@@ -92,6 +101,13 @@
 				android:priority="-999">
 			<action
 				android:name="com.bignerdranch.android.training.SHOW_NOTIFICATION" />
+			</intent-filter>
+		</receiver>
+		<!-- <receiver android:name=".LocationReceiver" -->
+		<receiver android:name=".TrackingLocationReceiver"
+			android:exported="false">
+			<intent-filter>
+				<action android:name="com.bignerdranch.android.training.ACTION_LOCATION"/>
 			</intent-filter>
 		</receiver>
     </application>

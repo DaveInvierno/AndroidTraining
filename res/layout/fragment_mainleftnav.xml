@@ -46,4 +46,10 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/drag_and_draw" />
 	
+	<Button 
+	    android:id="@+id/run_tracker"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/run_tracker" />
+	
 </LinearLayout>

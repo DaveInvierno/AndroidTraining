@@ -17,6 +17,7 @@ public class MainLeftNavFragment extends Fragment {
 	private Button mRemoteControl;
 	private Button mPhotoGallery;
 	private Button mDragAndDraw;
+	private Button mRunTracker;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,16 @@ public class MainLeftNavFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), DragAndDrawActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		mRunTracker = (Button)v.findViewById(R.id.run_tracker);
+		mRunTracker.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), RunListActivity.class);
 				startActivity(i);
 			}
 		});
