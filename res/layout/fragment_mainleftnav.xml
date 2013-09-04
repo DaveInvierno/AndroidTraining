@@ -40,4 +40,10 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/photo_gallery" />
 	
+	<Button 
+	    android:id="@+id/drag_and_draw"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/drag_and_draw" />
+	
 </LinearLayout>

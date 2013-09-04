@@ -7,11 +7,16 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
+    
+    <permission android:name="com.bignerdranch.android.training.PRIVATE"
+		android:protectionLevel="signature" />
+    
     <uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="com.bignerdranch.android.training.PRIVATE" />
 	
     <application
         android:allowBackup="true"
@@ -69,12 +74,26 @@
 			<meta-data android:name="android.app.searchable"
 				android:resource="@xml/searchable"/>
         </activity>
+        <activity
+			android:name=".PhotoPageActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".DragAndDrawActivity" 
+            android:label="@string/drag_and_draw" />
         <service android:name=".PollService" />
         <receiver android:name=".StartupReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 			</intent-filter>
 		</receiver>    
+		<receiver android:name=".NotificationReceiver"
+			android:exported="false">
+			<intent-filter
+				android:priority="-999">
+			<action
+				android:name="com.bignerdranch.android.training.SHOW_NOTIFICATION" />
+			</intent-filter>
+		</receiver>
     </application>
 
 </manifest>

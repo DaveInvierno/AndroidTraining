@@ -2,10 +2,10 @@ package com.bignerdranch.android.training;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.IntentService;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,8 @@ public class PollService extends IntentService {
 	private static final String TAG = "PollService";
 	private static final int POLL_INTERVAL = 1000 * 15; // 15 seconds
 	public static final String PREF_IS_ALARM_ON = "isAlarmOn";
-	public static final String ACTION_SHOW_NOTIFICATION = "com.bignerdranch.android.photogallery.SHOW_NOTIFICATION";
+	public static final String ACTION_SHOW_NOTIFICATION = "com.bignerdranch.android.training.SHOW_NOTIFICATION";
+	public static final String PERM_PRIVATE = "com.bignerdranch.android.training.PRIVATE";
 	
 	public PollService() {
 		super(TAG);
@@ -68,11 +69,13 @@ public class PollService extends IntentService {
 				.setAutoCancel(true)
 				.build();
 			
-			NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+			/*NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 			
 			notificationManager.notify(0, notification);
 			
-			sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION));
+			sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION), PERM_PRIVATE);*/
+			
+			showBackgroundNotification(0, notification);
 		} else {
 			Log.i(TAG, "Got an old result: " + resultId);
 		}
@@ -108,4 +111,11 @@ public class PollService extends IntentService {
 		return pi != null;
 	}
 
+	void showBackgroundNotification(int requestCode, Notification notification) {
+		Intent i = new Intent(ACTION_SHOW_NOTIFICATION);
+		i.putExtra("REQUEST_CODE", requestCode);
+		i.putExtra("NOTIFICATION", notification);
+		
+		sendOrderedBroadcast(i, PERM_PRIVATE, null, null, Activity.RESULT_OK, null, null);
+	}
 }

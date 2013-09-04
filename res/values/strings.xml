@@ -79,4 +79,7 @@
 	<string name="new_pictures_title">New PhotoGallery Pictures</string>
 	<string name="new_pictures_text">You have new pictures in PhotoGallery.</string>
 	
+	<!-- Drag And Draw -->
+	<string name="drag_and_draw">Drag And Draw</string>
+	
 </resources>
