@@ -202,7 +202,7 @@ containing a value of this type.
     public static final class id {
         public static final int FrameLayout1=0x7f070013;
         public static final int LinearLayout1=0x7f07000a;
-        public static final int action_settings=0x7f070042;
+        public static final int action_settings=0x7f070043;
         public static final int answer_text_view=0x7f070006;
         public static final int api_level=0x7f070012;
         public static final int cheat_button=0x7f07000f;
@@ -212,9 +212,9 @@ containing a value of this type.
         public static final int crime_date=0x7f07001a;
         public static final int crime_imageButton=0x7f070018;
         public static final int crime_imageView=0x7f070017;
-        public static final int crime_list_item_dateTextView=0x7f070041;
-        public static final int crime_list_item_solvedCheckBox=0x7f07003f;
-        public static final int crime_list_item_titleTextView=0x7f070040;
+        public static final int crime_list_item_dateTextView=0x7f070042;
+        public static final int crime_list_item_solvedCheckBox=0x7f070040;
+        public static final int crime_list_item_titleTextView=0x7f070041;
         public static final int crime_reportButton=0x7f07001e;
         public static final int crime_solved=0x7f07001c;
         public static final int crime_suspectButton=0x7f07001d;
@@ -231,6 +231,7 @@ containing a value of this type.
         public static final int fragment_remote_control_tableLayout=0x7f070033;
         public static final int fragment_remote_control_workingTextView=0x7f070035;
         public static final int gallery_item_imageView=0x7f07003e;
+        public static final int gallery_item_network=0x7f07003f;
         public static final int geo_quiz=0x7f070026;
         public static final int gridView=0x7f07002f;
         public static final int helloMoonFragment=0x7f070009;
@@ -241,13 +242,13 @@ containing a value of this type.
         public static final int hybrid=0x7f070004;
         public static final int map=0x7f07000b;
         public static final int mapTracker=0x7f07002e;
-        public static final int menu_item_clear=0x7f070047;
-        public static final int menu_item_delete_crime=0x7f070043;
-        public static final int menu_item_new_crime=0x7f070044;
-        public static final int menu_item_new_run=0x7f070049;
-        public static final int menu_item_search=0x7f070046;
-        public static final int menu_item_show_subtitle=0x7f070045;
-        public static final int menu_item_toggle_polling=0x7f070048;
+        public static final int menu_item_clear=0x7f070048;
+        public static final int menu_item_delete_crime=0x7f070044;
+        public static final int menu_item_new_crime=0x7f070045;
+        public static final int menu_item_new_run=0x7f07004a;
+        public static final int menu_item_search=0x7f070047;
+        public static final int menu_item_show_subtitle=0x7f070046;
+        public static final int menu_item_toggle_polling=0x7f070049;
         public static final int nerd_launcher=0x7f070029;
         public static final int next_button=0x7f070011;
         public static final int none=0x7f070000;
@@ -280,7 +281,7 @@ containing a value of this type.
         public static final int activity_fragment=0x7f030001;
         public static final int activity_hello_moon=0x7f030002;
         public static final int activity_map=0x7f030003;
-        public static final int activity_masterdetail=0x7f030015;
+        public static final int activity_masterdetail=0x7f030016;
         public static final int activity_quiz=0x7f030004;
         public static final int activity_twopane=0x7f030005;
         public static final int button_row=0x7f030006;
@@ -297,7 +298,8 @@ containing a value of this type.
         public static final int fragment_remote_control=0x7f030011;
         public static final int fragment_run=0x7f030012;
         public static final int gallery_item=0x7f030013;
-        public static final int list_item_crime=0x7f030014;
+        public static final int gallery_item_network=0x7f030014;
+        public static final int list_item_crime=0x7f030015;
     }
     public static final class menu {
         public static final int crime=0x7f0b0000;

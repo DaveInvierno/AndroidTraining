@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,12 +29,22 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageCache;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
+
 public class PhotoGalleryFragment extends VisibleFragment {
 	private static final String TAG = "PhotoGalleryFragment";
 	
 	GridView mGridView;
 	ArrayList<GalleryItem> mItems;
 	ThumbnailDownloader<ImageView> mThumbnailThread;
+	
+	RequestQueue mQueue;
+	ImageLoader mImageLoader;
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +56,8 @@ public class PhotoGalleryFragment extends VisibleFragment {
 		
 		//PollService.setServiceAlarm(getActivity(), true);
 		
-		mThumbnailThread = new ThumbnailDownloader(new Handler());
+		//with ThumnailDownloader
+		/*mThumbnailThread = new ThumbnailDownloader(new Handler());
 		mThumbnailThread.setListener(new ThumbnailDownloader.Listener<ImageView>() {
 			@Override
 			public void onThumbnailDownloaded(ImageView imageView, Bitmap thumbnail) {
@@ -57,7 +67,21 @@ public class PhotoGalleryFragment extends VisibleFragment {
 			}
 		});
 		mThumbnailThread.start();
-		mThumbnailThread.getLooper();
+		mThumbnailThread.getLooper();*/
+		
+		//with Volley
+		mQueue = Volley.newRequestQueue(getActivity());
+
+	    mImageLoader = new ImageLoader(mQueue, new ImageCache() {
+	    	@Override
+            public void putBitmap(String key, Bitmap value) { }
+
+            @Override
+            public Bitmap getBitmap(String key) {
+                return null;
+            }
+        });
+
 		Log.i(TAG, "Background thread started");
 	}
 	
@@ -92,14 +116,14 @@ public class PhotoGalleryFragment extends VisibleFragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		mThumbnailThread.quit();
+		//mThumbnailThread.quit();					//with ThumnailDownloader
 		Log.i(TAG, "Background thread destroyed");
 	}
 	
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		mThumbnailThread.clearQueue();
+		//mThumbnailThread.clearQueue();			//with ThumnailDownloader
 	}
 	
 	@TargetApi(11)
@@ -182,14 +206,34 @@ public class PhotoGalleryFragment extends VisibleFragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
+				Log.d(TAG, "Gallery Item");
 				convertView = getActivity().getLayoutInflater()
-				.inflate(R.layout.gallery_item, parent, false);
+						.inflate(R.layout.gallery_item_network, parent, false);
 			}
-			ImageView imageView = (ImageView)convertView.findViewById(R.id.gallery_item_imageView);
-			imageView.setImageResource(R.drawable.brian_up_close);
+			
+			//with ThumbnailDownloader Class
+			//ImageView imageView = (ImageView)convertView.findViewById(R.id.gallery_item_imageView);
+			//imageView.setImageResource(R.drawable.brian_up_close);
+			//GalleryItem item = getItem(position);
+			//mThumbnailThread.queueThumbnail(imageView, item.getUrl());
+			
+			//with Picasso
+			/*Picasso.with(getActivity())
+	            .load(item.getUrl())
+	            .noFade()
+	            .into(imageView);*/
+			
+			Log.d(TAG, "Gallery Item");
+			
 			GalleryItem item = getItem(position);
-			mThumbnailThread.queueThumbnail(imageView, item.getUrl());
+
+            NetworkImageView imageView = (NetworkImageView)convertView
+                    .findViewById(R.id.gallery_item_network);
+            imageView.setDefaultImageResId(R.drawable.brian_up_close);
+            imageView.setImageUrl(item.getUrl(), mImageLoader);
+
 			return convertView;
+			
 		}
 	}
 	
