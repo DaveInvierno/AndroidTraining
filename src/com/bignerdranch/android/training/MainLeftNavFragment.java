@@ -18,6 +18,7 @@ public class MainLeftNavFragment extends Fragment {
 	private Button mPhotoGallery;
 	private Button mDragAndDraw;
 	private Button mRunTracker;
+	private Button mMap;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,16 @@ public class MainLeftNavFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), RunListActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		mMap = (Button)v.findViewById(R.id.map);
+		mMap.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), MapActivity.class);
 				startActivity(i);
 			}
 		});

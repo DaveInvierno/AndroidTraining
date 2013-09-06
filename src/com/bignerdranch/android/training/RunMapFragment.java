@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,27 +26,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 public class RunMapFragment extends SupportMapFragment implements LoaderCallbacks<Cursor> {
+
 	private static final String ARG_RUN_ID = "RUN_ID";
 	private static final int LOAD_LOCATIONS = 0;
 	
 	private GoogleMap mGoogleMap;
 	private LocationCursor mLocationCursor;
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		// Check for a Run ID as an argument, and find the run
-		Bundle args = getArguments();
-		if (args != null) {
-			long runId = args.getLong(ARG_RUN_ID, -1);
-		
-			if (runId != -1) {
-				LoaderManager lm = getLoaderManager();
-				lm.initLoader(LOAD_LOCATIONS, args, this);
-			}
-		}
-	}
 	
 	public static RunMapFragment newInstance(long runId) {
 		Bundle args = new Bundle();
@@ -56,21 +42,54 @@ public class RunMapFragment extends SupportMapFragment implements LoaderCallback
 	}
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup parent,	Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// Check for a Run ID as an argument, and find the run
+		Bundle args = getArguments();
+		if (args != null) {
+			long runId = args.getLong(ARG_RUN_ID, -1);
+			if (runId != -1) {
+				LoaderManager lm = getLoaderManager();
+				lm.initLoader(LOAD_LOCATIONS, args, this);
+			}
+		}
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {	
 		View v = super.onCreateView(inflater, parent, savedInstanceState);
-		
 		// Stash a reference to the GoogleMap
 		mGoogleMap = getMap();
 		// Show the user's location
 		mGoogleMap.setMyLocationEnabled(true);
-		
 		return v;
 	}
 	
+	@Override
+	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		long runId = args.getLong(ARG_RUN_ID, -1);
+		return new LocationListCursorLoader(getActivity(), runId);
+	}
+	
+	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+		mLocationCursor = (LocationCursor)cursor;
+		updateUI();
+	}
+	
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader) {
+		// Stop using the data
+		mLocationCursor.close();
+		mLocationCursor = null;
+	}
+	
 	private void updateUI() {
-		if (mGoogleMap == null || mLocationCursor == null)
+		if (mGoogleMap == null || mLocationCursor == null) {
+			Log.d("HERE", "NULL");
 			return;
-		
+		}
+			
 		// Set up an overlay on the map for this run's locations
 		// Create a polyline with all of the points
 		PolylineOptions line = new PolylineOptions();
@@ -100,7 +119,7 @@ public class RunMapFragment extends SupportMapFragment implements LoaderCallback
 					.snippet(r.getString(R.string.run_finished_at_format, endDate));
 				mGoogleMap.addMarker(finishMarkerOptions);
 			}
-			
+				
 			line.add(latLng);
 			latLngBuilder.include(latLng);
 			mLocationCursor.moveToNext();
@@ -116,22 +135,4 @@ public class RunMapFragment extends SupportMapFragment implements LoaderCallback
 		mGoogleMap.moveCamera(movement);
 	}
 	
-	@Override
-	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		long runId = args.getLong(ARG_RUN_ID, -1);
-		return new LocationListCursorLoader(getActivity(), runId);
-	}
-	
-	@Override
-	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-		mLocationCursor = (LocationCursor)cursor;
-		updateUI();
-	}
-	
-	@Override
-	public void onLoaderReset(Loader<Cursor> loader) {
-		// Stop using the data
-		mLocationCursor.close();
-		mLocationCursor = null;
-	}
 }

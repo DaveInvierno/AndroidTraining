@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 
 public class RunMapActivity extends SingleFragmentActivity {
 	/** A key for passing a run ID as a long */
-	public static final String EXTRA_RUN_ID =
-	"com.bignerdranch.android.training.run_id";
+	public static final String EXTRA_RUN_ID = "com.bignerdranch.android.training.run_id";
+	
 	
 	@Override
 	protected Fragment createFragment() {
@@ -15,6 +15,12 @@ public class RunMapActivity extends SingleFragmentActivity {
 		} else {
 			return new RunMapFragment();
 		}
+	}
+
+	@Override
+	protected int getLayoutResId() {
+		// TODO Auto-generated method stub
+		return R.layout.fragment_map;
 	}
 
 }
