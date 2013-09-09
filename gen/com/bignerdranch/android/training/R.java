@@ -201,11 +201,10 @@ containing a value of this type.
     }
     public static final class id {
         public static final int FrameLayout1=0x7f070013;
-        public static final int LinearLayout1=0x7f07000a;
         public static final int action_settings=0x7f070043;
         public static final int answer_text_view=0x7f070006;
-        public static final int api_level=0x7f070012;
-        public static final int cheat_button=0x7f07000f;
+        public static final int api_level=0x7f070011;
+        public static final int cheat_button=0x7f07000e;
         public static final int crime_camera_progressContainer=0x7f070021;
         public static final int crime_camera_surfaceView=0x7f07001f;
         public static final int crime_camera_takePictureButton=0x7f070020;
@@ -225,7 +224,7 @@ containing a value of this type.
         public static final int dialog_date_datePicker=0x7f070015;
         public static final int dialog_time_timePicker=0x7f070016;
         public static final int drag_and_draw=0x7f07002c;
-        public static final int false_button=0x7f07000e;
+        public static final int false_button=0x7f07000d;
         public static final int fragmentContainer=0x7f070008;
         public static final int fragment_remote_control_selectedTextView=0x7f070034;
         public static final int fragment_remote_control_tableLayout=0x7f070033;
@@ -240,7 +239,7 @@ containing a value of this type.
         public static final int hellomoon_playButton=0x7f070022;
         public static final int hellomoon_stopButton=0x7f070024;
         public static final int hybrid=0x7f070004;
-        public static final int map=0x7f07000b;
+        public static final int map=0x7f07000a;
         public static final int mapTracker=0x7f07002e;
         public static final int menu_item_clear=0x7f070048;
         public static final int menu_item_delete_crime=0x7f070044;
@@ -250,13 +249,13 @@ containing a value of this type.
         public static final int menu_item_show_subtitle=0x7f070046;
         public static final int menu_item_toggle_polling=0x7f070049;
         public static final int nerd_launcher=0x7f070029;
-        public static final int next_button=0x7f070011;
+        public static final int next_button=0x7f070010;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
         public static final int photo_gallery=0x7f07002b;
-        public static final int prev_button=0x7f070010;
+        public static final int prev_button=0x7f07000f;
         public static final int progressBar=0x7f070032;
-        public static final int question_text_view=0x7f07000c;
+        public static final int question_text_view=0x7f07000b;
         public static final int remote_control=0x7f07002a;
         public static final int run_altitudeTextView=0x7f070039;
         public static final int run_durationTextView=0x7f07003a;
@@ -271,7 +270,8 @@ containing a value of this type.
         public static final int show_answer_button=0x7f070007;
         public static final int terrain=0x7f070003;
         public static final int titleTextView=0x7f070031;
-        public static final int true_button=0x7f07000d;
+        public static final int togglebutton=0x7f070012;
+        public static final int true_button=0x7f07000c;
         public static final int videoView=0x7f070025;
         public static final int viewPager=0x7f070005;
         public static final int webView=0x7f070030;

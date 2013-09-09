@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,9 +32,6 @@ import android.widget.SearchView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageLoader.ImageCache;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 
 public class PhotoGalleryFragment extends VisibleFragment {
 	private static final String TAG = "PhotoGalleryFragment";
@@ -44,7 +42,6 @@ public class PhotoGalleryFragment extends VisibleFragment {
 	
 	RequestQueue mQueue;
 	ImageLoader mImageLoader;
-	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +54,7 @@ public class PhotoGalleryFragment extends VisibleFragment {
 		//PollService.setServiceAlarm(getActivity(), true);
 		
 		//with ThumnailDownloader
-		/*mThumbnailThread = new ThumbnailDownloader(new Handler());
+		mThumbnailThread = new ThumbnailDownloader(new Handler());
 		mThumbnailThread.setListener(new ThumbnailDownloader.Listener<ImageView>() {
 			@Override
 			public void onThumbnailDownloaded(ImageView imageView, Bitmap thumbnail) {
@@ -67,10 +64,10 @@ public class PhotoGalleryFragment extends VisibleFragment {
 			}
 		});
 		mThumbnailThread.start();
-		mThumbnailThread.getLooper();*/
+		mThumbnailThread.getLooper();
 		
 		//with Volley
-		mQueue = Volley.newRequestQueue(getActivity());
+		/*mQueue = Volley.newRequestQueue(getActivity());
 
 	    mImageLoader = new ImageLoader(mQueue, new ImageCache() {
 	    	@Override
@@ -80,7 +77,7 @@ public class PhotoGalleryFragment extends VisibleFragment {
             public Bitmap getBitmap(String key) {
                 return null;
             }
-        });
+        });*/
 
 		Log.i(TAG, "Background thread started");
 	}
@@ -208,14 +205,17 @@ public class PhotoGalleryFragment extends VisibleFragment {
 			if (convertView == null) {
 				Log.d(TAG, "Gallery Item");
 				convertView = getActivity().getLayoutInflater()
-						.inflate(R.layout.gallery_item_network, parent, false);
+						.inflate(R.layout.gallery_item, parent, false);
+				//with volley
+				/*convertView = getActivity().getLayoutInflater()
+						.inflate(R.layout.gallery_item_network, parent, false);*/
 			}
 			
 			//with ThumbnailDownloader Class
-			//ImageView imageView = (ImageView)convertView.findViewById(R.id.gallery_item_imageView);
-			//imageView.setImageResource(R.drawable.brian_up_close);
-			//GalleryItem item = getItem(position);
-			//mThumbnailThread.queueThumbnail(imageView, item.getUrl());
+			ImageView imageView = (ImageView)convertView.findViewById(R.id.gallery_item_imageView);
+			imageView.setImageResource(R.drawable.brian_up_close);
+			GalleryItem item = getItem(position);
+			mThumbnailThread.queueThumbnail(imageView, item.getUrl());
 			
 			//with Picasso
 			/*Picasso.with(getActivity())
@@ -223,14 +223,15 @@ public class PhotoGalleryFragment extends VisibleFragment {
 	            .noFade()
 	            .into(imageView);*/
 			
-			Log.d(TAG, "Gallery Item");
+			//with Volley
+			/*Log.d(TAG, "Gallery Item");
 			
 			GalleryItem item = getItem(position);
 
             NetworkImageView imageView = (NetworkImageView)convertView
                     .findViewById(R.id.gallery_item_network);
             imageView.setDefaultImageResId(R.drawable.brian_up_close);
-            imageView.setImageUrl(item.getUrl(), mImageLoader);
+            imageView.setImageUrl(item.getUrl(), mImageLoader);*/
 
 			return convertView;
 			

@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class QuizActivity extends Activity {
 
@@ -27,6 +29,7 @@ public class QuizActivity extends Activity {
 	private ImageButton mPrevButton;
 	private TextView mQuestionTextView;
 	private TextView mApiLevel;
+	private ToggleButton mToggleButton;
 	
 	private TrueFalse[] mQuestionBank = new TrueFalse[] {
 	new TrueFalse(R.string.question_oceans, true, false),
@@ -123,6 +126,18 @@ public class QuizActivity extends Activity {
 		mApiLevel = (TextView)findViewById(R.id.api_level);
 		mApiLevel.setText("API LEVEL" + Build.VERSION.SDK_INT);
 		
+		mToggleButton = (ToggleButton)findViewById(R.id.togglebutton);
+		mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked)
+					Toast.makeText(QuizActivity.this, "Toggle Button is ON", Toast.LENGTH_SHORT).show();
+				else
+					Toast.makeText(QuizActivity.this, "Toggle Button is OF", Toast.LENGTH_SHORT).show();
+			}
+		});
+		
 		updateQuestion();
 	}
 
@@ -133,6 +148,17 @@ public class QuizActivity extends Activity {
 		savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
 		savedInstanceState.putBoolean(KEY_VALUE, mQuestionBank[mCurrentIndex].isCheated());
 		//savedInstanceState.putSerializable(KEY_VALUE, mQuestionBank);
+	}
+	
+	public void onToggleClicked(View view) {
+	    // Is the toggle on?
+	    boolean on = ((ToggleButton) view).isChecked();
+	    
+	    if (on) {
+	        // Enable vibrate
+	    } else {
+	        // Disable vibrate
+	    }
 	}
 	
 	@Override
